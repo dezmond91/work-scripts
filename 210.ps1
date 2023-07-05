@@ -6,16 +6,16 @@ Add-Type -AssemblyName System.Drawing
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 $path = "c:\PROGRAM\version.ini"
-$sor2 = Get-Content $path | Select-Object -Index 1
-$szoveg = 0
+$row2 = Get-Content $path | Select-Object -Index 1
+$text = 0
 $Folder = 'c:\PROGRAM\'
 
 if (-not(Test-Path -Path $Folder)) {
-   $szoveg = "The Program is not installed, would you like to install now?"
-} elseif ($sor2 -eq "Ver = 3.90.200.210") { 
-	$szoveg = "The version of the program is fine (.210)`n Before starting it please exit from other instances of the program!"}
+   $text = "The Program is not installed, would you like to install now?"
+} elseif ($row2 -eq "Ver = 3.90.200.210") { 
+	$text = "The version of the program is fine (.210)`n Before starting it please exit from other instances of the program!"}
 else {
-	$szoveg = "Your program has updated`nReinstall with the button below"
+	$text = "Your program has updated`nReinstall with the button below"
 }
 
 
@@ -31,7 +31,7 @@ $procFont = New-Object System.Drawing.Font("Verdana", 15, [System.Drawing.FontSt
 
 $Label = New-Object System.Windows.Forms.Label
 $Label.Font = $header
-if ($sor2 -eq "Ver = 3.90.200.210") {
+if ($row2 -eq "Ver = 3.90.200.210") {
 	$Label.ForeColor = 'green'
 } else {
 	$Label.ForeColor = 'red'
@@ -44,7 +44,7 @@ $Label.Height = 65
 
 $Label2 = New-Object System.Windows.Forms.Label
 $Label2.Font = $header
-if ($sor2 -eq "Ver = 3.90.200.210") {
+if ($row2 -eq "Ver = 3.90.200.210") {
 	$Label2.ForeColor = 'magenta'
 } else {
 	$Label2.ForeColor = 'white'
@@ -133,7 +133,7 @@ $EndButton.Add_click( { $Main_Form.Close() });
 
 if (-not(Test-Path -Path $Folder)) {
    $main_form.Controls.AddRange(($Label, $InstallButton, $EndButton))
-} elseif ($sor2 -eq "Ver = 3.90.200.210") { 
+} elseif ($row2 -eq "Ver = 3.90.200.210") { 
 	$main_form.Controls.AddRange(($Label, $Label2, $StartButton, $CopyButton, $EndButton))}
 else {
 	$main_form.Controls.AddRange(($Label, $ReInstallButton, $EndButton))
