@@ -10,6 +10,9 @@ Desktop shortcuts for using different browsers, not the default one.
 # no_sleep.bat
 Place it at shell:startup common and it overrides the group policy rule which force the computer to go sleep after 10 minutes of inactivity. Useful when you work away from your computer, because sometimes coming back from sleep it loses the network drives.
 
+# printer.bat
+My account is a member of multiple network printer, the computer won't remember the default setting, in the batch file there is a listing command and one for setting the default printer.
+
 # ps.bat
 Batch file which calls a PowerShell script, same as above, to bypass group policy. For example calling the 210.ps2 script.
 
